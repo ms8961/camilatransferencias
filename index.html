@@ -2,18 +2,20 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <title>Camila Transferencias</title>
 
 <!-- Fuentes -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <!-- Iconos -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* RESET PRO */
+/* =========================
+   RESET PROFESIONAL
+========================= */
 *,
 *::before,
 *::after{
@@ -22,217 +24,244 @@
   padding:0;
 }
 
-/* SISTEMA DE DISEÑO */
-:root{
-  --primary:#6b2fbf;
-  --primary-soft:#f1eaff;
-  --primary-dark:#2f124f;
+html{scroll-behavior:smooth}
 
-  --bg-main:#f4f2f8;
+body{
+  font-family:'Inter',sans-serif;
+  background:#f5f4f8;
+  color:#1b1b1b;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* =========================
+   SISTEMA DE DISEÑO
+========================= */
+:root{
+  --primary:#5b2fbf;
+  --primary-dark:#2a114d;
+  --primary-soft:#f1ebff;
+
+  --bg-main:#f5f4f8;
   --bg-card:#ffffff;
 
   --text-main:#1b1b1b;
-  --text-muted:#666;
+  --text-muted:#6a6a6a;
 
-  --radius-xl:24px;
-  --radius-lg:18px;
-  --radius-md:12px;
+  --radius-xl:28px;
+  --radius-lg:20px;
+  --radius-md:14px;
 
-  --shadow-sm:0 6px 20px rgba(0,0,0,.06);
+  --shadow-sm:0 6px 18px rgba(0,0,0,.06);
   --shadow-md:0 14px 40px rgba(0,0,0,.08);
-  --shadow-lg:0 24px 70px rgba(0,0,0,.10);
+  --shadow-lg:0 28px 80px rgba(0,0,0,.12);
 
-  --transition:.25s ease;
+  --transition:.35s cubic-bezier(.2,.7,.2,1);
 }
 
-/* BASE */
-body{
-  font-family:'Inter',sans-serif;
-  background:
-    radial-gradient(circle at top, #ffffff 0%, #f5f0ff 50%, #f0eaff 100%);
-  color:var(--text-main);
-  line-height:1.75;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-img{
-  max-width:100%;
-  display:block;
-}
-
-/* HEADER SUPER LIMPIO */
+/* =========================
+   HEADER
+========================= */
 header{
   background:#fff;
+  padding:14px 16px;
   border-bottom:1px solid #eee;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
 .watermark{
   text-align:center;
-  font-size:12px;
-  padding:16px;
-  color:var(--primary-dark);
+  font-size:11px;
+  font-weight:800;
   letter-spacing:3px;
+  color:var(--primary-dark);
   text-transform:uppercase;
-  font-weight:600;
 }
 
-/* LAYOUT CENTRAL */
+/* =========================
+   LAYOUT MOBILE-FIRST
+========================= */
 main{
-  max-width:1080px;
-  margin:auto;
-  padding:90px 24px 60px;
-  display:grid;
-  gap:80px;
+  max-width:520px;
+  margin:0 auto;
+  padding:28px 16px 120px; /* deja espacio a la barra flotante */
+  display:flex;
+  flex-direction:column;
+  gap:56px;
 }
 
-/* SECCIONES COMO CARDS FINTECH */
+/* =========================
+   SECCIONES
+========================= */
 section{
   background:var(--bg-card);
-  padding:56px 64px;
+  padding:36px 28px;
   border-radius:var(--radius-xl);
   box-shadow:var(--shadow-md);
   position:relative;
+  opacity:0;
+  transform:translateY(30px);
+  transition:all .6s ease;
 }
 
-/* línea vertical de identidad */
+section.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* barra identidad */
 section::before{
   content:"";
   position:absolute;
   left:0;
-  top:40px;
-  bottom:40px;
-  width:5px;
-  background:linear-gradient(180deg,var(--primary),#c59cff);
-  border-radius:5px;
+  top:28px;
+  bottom:28px;
+  width:4px;
+  background:linear-gradient(180deg,var(--primary),#bfa6ff);
+  border-radius:4px;
 }
 
-/* HERO DIFERENCIADO */
+/* =========================
+   HERO
+========================= */
 section:first-child{
-  background:
-    linear-gradient(135deg,#ffffff 0%,#f7f3ff 100%);
+  background:linear-gradient(135deg,#ffffff 0%,#f6f2ff 100%);
   box-shadow:var(--shadow-lg);
+  padding:44px 30px 48px;
 }
 
 /* LOGO */
 .logo{
   display:flex;
   justify-content:center;
-  margin-bottom:30px;
+  margin-bottom:24px;
 }
 
 .logo img{
-  max-width:150px;
-  padding:16px;
+  max-width:120px;
+  padding:14px;
   background:#fff;
   border-radius:22px;
   border:1px solid #e6d6ff;
   box-shadow:var(--shadow-sm);
 }
 
-/* TITULOS CORPORATIVOS */
-h1, h2, summary{
-  font-family:'Playfair Display',serif;
-  color:var(--primary-dark);
-}
-
+/* =========================
+   TIPOGRAFÍA
+========================= */
 h1{
-  font-size:44px;
+  font-family:'Playfair Display',serif;
+  font-size:34px;
+  font-weight:700;
   text-align:center;
-  margin-bottom:14px;
-  letter-spacing:1.5px;
+  letter-spacing:1px;
+  color:var(--primary-dark);
+  margin-bottom:12px;
 }
 
 h2{
-  font-size:32px;
+  font-family:'Playfair Display',serif;
+  font-size:26px;
+  font-weight:700;
   text-align:center;
-  margin-bottom:18px;
-  letter-spacing:.8px;
+  letter-spacing:.6px;
+  color:var(--primary-dark);
+  margin-bottom:16px;
 }
 
-/* DIVIDER PRO */
-.divider{
-  width:80px;
-  height:3px;
-  background:linear-gradient(90deg,var(--primary),#c59cff);
-  margin:28px auto 36px;
-  border-radius:10px;
-}
-
-/* TEXTO */
 p{
-  font-size:17px;
+  font-size:16px;
   color:#3f3f3f;
 }
 
-/* BOTONES PREMIUM */
+/* =========================
+   DIVIDER
+========================= */
+.divider{
+  width:72px;
+  height:3px;
+  background:linear-gradient(90deg,var(--primary),#bfa6ff);
+  margin:24px auto 30px;
+  border-radius:10px;
+}
+
+/* =========================
+   BOTONES PRINCIPALES
+========================= */
 .buttons{
   display:flex;
-  justify-content:center;
-  gap:16px;
-  flex-wrap:wrap;
-  margin-top:40px;
+  flex-direction:column;
+  gap:14px;
+  margin-top:34px;
 }
 
 .btn{
-  padding:14px 30px;
-  border-radius:14px;
-  font-weight:600;
+  width:100%;
+  padding:16px 20px;
+  border-radius:16px;
+  font-weight:800;
   font-size:15px;
   display:flex;
   align-items:center;
+  justify-content:center;
   gap:10px;
   color:#fff;
-  box-shadow:0 10px 28px rgba(0,0,0,.18);
-  transition:all .25s ease;
+  box-shadow:0 10px 26px rgba(0,0,0,.22);
+  transition:var(--transition);
 }
 
 .btn:hover{
-  transform:translateY(-4px);
-  box-shadow:0 18px 45px rgba(0,0,0,.28);
+  transform:translateY(-3px);
+  box-shadow:0 16px 40px rgba(0,0,0,.28);
 }
+
+.btn:active{transform:scale(.97)}
 
 .whatsapp{background:#25d366}
 .instagram{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
 .facebook{background:#1877f2}
 
-/* CAPTURAS EN GRID PRO */
+/* =========================
+   CAPTURAS
+========================= */
 .capturas{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-  margin-top:36px;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:28px;
 }
 
 .capturas img{
-  border-radius:18px;
+  width:100%;
+  border-radius:16px;
   border:1px solid #e6d6ff;
   background:#fff;
-  padding:6px;
+  padding:5px;
   box-shadow:var(--shadow-sm);
-  transition:.25s;
+  transition:var(--transition);
 }
 
 .capturas img:hover{
-  transform:scale(1.04);
+  transform:scale(1.03);
   box-shadow:var(--shadow-md);
 }
 
-/* TESTIMONIOS COMO TARJETAS */
+/* =========================
+   TESTIMONIOS
+========================= */
 .refs{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:28px;
-  margin-top:40px;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+  margin-top:30px;
 }
 
 .ref{
   background:#faf7ff;
-  padding:28px;
-  border-radius:20px;
+  padding:24px;
+  border-radius:18px;
   border:1px solid #eadbff;
   box-shadow:var(--shadow-sm);
 }
@@ -245,59 +274,116 @@ p{
 
 .ref span{
   display:block;
-  margin-top:12px;
+  margin-top:10px;
   font-size:13px;
   color:#7a4fa0;
-  font-weight:500;
+  font-weight:700;
 }
 
-/* FAQ TIPO EMPRESA */
+/* =========================
+   FAQ
+========================= */
 .faq details{
-  padding:22px 0;
+  padding:18px 0;
   border-bottom:1px solid #e8d8ff;
 }
 
 .faq summary{
-  font-size:18px;
+  font-size:17px;
+  font-weight:700;
   cursor:pointer;
   color:var(--primary-dark);
-  font-weight:600;
 }
 
 .faq p{
-  margin-top:12px;
+  margin-top:10px;
   color:#555;
 }
 
-/* FOOTER MINIMALISTA */
+/* =========================
+   FOOTER
+========================= */
 footer{
   text-align:center;
-  padding:34px;
-  font-size:12px;
+  padding:30px 16px;
+  font-size:11px;
+  font-weight:800;
   color:var(--primary-dark);
   border-top:1px solid #eadbff;
   background:#fff;
-  letter-spacing:2px;
+  letter-spacing:3px;
   text-transform:uppercase;
 }
 
-/* RESPONSIVE */
-@media(max-width:900px){
+/* =========================
+   BARRA FLOTANTE DE CONTACTO
+========================= */
+.floating-bar{
+  position:fixed;
+  bottom:14px;
+  left:50%;
+  transform:translateX(-50%);
+  width:calc(100% - 32px);
+  max-width:520px;
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 14px 40px rgba(0,0,0,.25);
+  display:flex;
+  justify-content:space-around;
+  padding:12px 10px;
+  z-index:200;
+}
+
+.floating-bar a{
+  flex:1;
+  text-align:center;
+  font-size:13px;
+  font-weight:700;
+  color:var(--primary-dark);
+}
+
+.floating-bar i{
+  display:block;
+  font-size:18px;
+  margin-bottom:4px;
+}
+
+/* =========================
+   DESKTOP
+========================= */
+@media(min-width:900px){
+
   main{
-    padding:60px 20px 40px;
-    gap:60px;
+    max-width:1100px;
+    padding:80px 24px 140px;
+    gap:80px;
   }
 
   section{
-    padding:40px 32px;
+    padding:56px 64px;
   }
 
-  .refs{
-    grid-template-columns:1fr;
+  .buttons{
+    flex-direction:row;
+    justify-content:center;
+  }
+
+  .btn{
+    width:auto;
+    min-width:180px;
   }
 
   .capturas{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .refs{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .floating-bar{
+    max-width:700px;
   }
 }
 </style>
@@ -314,7 +400,7 @@ footer{
   <!-- HERO -->
   <section>
     <div class="logo">
-      <img src="logo.jpg" alt="Camila Transferencias">
+      <img src="logo.jpg" alt="Camila Transferencias" loading="lazy">
     </div>
 
     <h1>CAMILA TRANSFERENCIAS</h1>
@@ -361,12 +447,12 @@ Usted aporta el capital y nosotros ponemos el conocimiento, el tiempo y la estra
     <div class="divider"></div>
 
     <div class="capturas">
-      <img src="img1.jpg" alt="Referencia 1">
-      <img src="img2.jpg" alt="Referencia 2">
-      <img src="img3.jpg" alt="Referencia 3">
-      <img src="img4.jpg" alt="Referencia 4">
-      <img src="img5.jpg" alt="Referencia 5">
-      <img src="img6.jpg" alt="Referencia 6">
+      <img src="img1.jpg" alt="Referencia 1" loading="lazy">
+      <img src="img2.jpg" alt="Referencia 2" loading="lazy">
+      <img src="img3.jpg" alt="Referencia 3" loading="lazy">
+      <img src="img4.jpg" alt="Referencia 4" loading="lazy">
+      <img src="img5.jpg" alt="Referencia 5" loading="lazy">
+      <img src="img6.jpg" alt="Referencia 6" loading="lazy">
     </div>
   </section>
 
@@ -434,6 +520,39 @@ Usted aporta el capital y nosotros ponemos el conocimiento, el tiempo y la estra
 <footer>
   Camila Transferencias
 </footer>
+
+<!-- BARRA FLOTANTE -->
+<div class="floating-bar">
+  <a href="https://wa.me/3513399450">
+    <i class="fab fa-whatsapp"></i>
+    WhatsApp
+  </a>
+  <a href="https://instagram.com/camila.febrero">
+    <i class="fab fa-instagram"></i>
+    Instagram
+  </a>
+  <a href="https://www.facebook.com/share/1BDDtBWY4r/?mibextid=wwXIfr">
+    <i class="fab fa-facebook-f"></i>
+    Facebook
+  </a>
+</div>
+
+<script>
+/* =========================
+   ANIMACIONES ON SCROLL
+========================= */
+const sections = document.querySelectorAll("section");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+    }
+  });
+},{threshold:0.15});
+
+sections.forEach(sec => observer.observe(sec));
+</script>
 
 </body>
 </html>
